@@ -25,4 +25,6 @@ if(isset($_GET['page']) && $_GET['page'] === '1') {
 $router = new App\Router(dirname(__DIR__) . '/views'); 
 $router
     ->get('/', 'article/index', 'home') // Page d'accueil
+    ->get('/blog/category/[*:slug]-[i:id]', 'category/show', 'category')
+    ->get('/blog/[*:slug]-[i:id]', 'article/show', 'article')
     ->run(); // Elle permet de lancer notre routeur
