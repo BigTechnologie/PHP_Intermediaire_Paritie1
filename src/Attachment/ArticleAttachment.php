@@ -13,7 +13,7 @@ class ArticleAttachment {
     const UPLOAD_PATH = __DIR__ . '/../../public/uploads';
 
     // Chemin spécifique pour les images d'articles
-    const DIRECTORY = self::UPLOAD_PATH . DIRECTORY_SEPARATOR . 'articles'; 
+    const DIRECTORY = self::UPLOAD_PATH . DIRECTORY_SEPARATOR . 'posts'; 
 
     /**
      * Upload les images d’un article dans deux formats (small et large).
