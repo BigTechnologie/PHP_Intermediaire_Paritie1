@@ -1,72 +1,60 @@
-<?php
+<?php 
 
 use App\Attachment\ArticleAttachment;
 use App\Connection;
 use App\Controller\ArticleController;
 use App\Controller\CategoryController;
 use App\HTML\Form;
-use App\ObjectHelper;
+use App\Model\Article;
 use App\Validators\ArticleValidator;
-
-
-$pdo = Connection::getPDO();
-$articleController = new ArticleController($pdo);
-$categoryTable = new CategoryController($pdo);
-
-$categories = $categoryTable->list();
-
-$article = $articleController->find($params['id']);
-
-$categoryTable->hydrateArticles([$article]);
-
-$success = false;
+use App\ObjectHelper;
 
 $errors = [];
 
+//Création d'un nouvel objet Article (vide pour l'instant)
+$article = new Article();
+$pdo = Connection::getPDO();
+
+// Recuperation des catégories disponibles via le controller
+$categoryTable = new CategoryController($pdo);
+$categories = $categoryTable->list();
+
+// On defini la date de création de l'article au moment actuel
+$article->setCreatedAt(date('Y-m-d H:i:s'));
 
 if (!empty($_POST)) {
 
-    // Fusionne les données issues du formulaire et des fichiers uploadés
-    $data = array_merge($_POST, $_FILES);
+    $articleController = new ArticleController($pdo);
 
-    // Création d'un validateur pour vérifier les données
+      // Fusionne les données issues du formulaire et des fichiers uploadés
+      $data = array_merge($_POST, $_FILES);
+
+         // Création d'un validateur pour vérifier les données
     $v = new ArticleValidator($data, $articleController,$categories, $article->getID());
 
     ObjectHelper::hydrate($article, $data, ['name', 'content', 'slug', 'created_at', 'image']);
 
-    // Si les données sont valides
     if($v->validate()) {
 
         $pdo->beginTransaction();
         ArticleAttachment::upload($article);
-
-        $articleController->updateArticle($article);
+        $articleController->createArticle($article);
         $articleController->attachCategories($article->getID(), $_POST['categories_ids']);
+
         $pdo->commit();
 
-        $categoryTable->hydrateArticles([$article]);
-        $success = true;
+        header('Location: ' . $router->url('admin_article', ['id' => $article->getID()]) . '?created=1');
+        exit();
 
     } else {
         $errors = $v->errors();
     }
 }
 
+// On prépare le formulaire HTML avec les données de notre article et les erreurs
 $form = new Form($article, $errors);
 
 ?>
-
-<?php if($success): ?>
-    <div class="alert alert-success">
-        L'article a bien été modifié
-    </div>
-<?php endif ?>
-
-<?php if(isset($_GET['created'])): ?>
-    <div class="alert alert-success">
-        L'article a bien été crée
-    </div>
-<?php endif ?>
 
 <?php if(!empty($errors)): ?>
     <div class="alert alert-danger">
@@ -74,6 +62,6 @@ $form = new Form($article, $errors);
     </div>
 <?php endif ?>
 
-<h1>Editer l'article <?= htmlentities($article->getName()) ?></h1>
+<h1>Créer un article</h1>
 
 <?php require('_form.php') ?>
