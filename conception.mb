@@ -15,9 +15,9 @@ C: Exceptions => Exceptions personnalisées
 /////////////////////////////////////////////////////////////
 
 8- Affichage en detail => article et categorie                      //OK
-9- validation => sur Article, Category, image et formulaires 
-10-Traitement d'images et validation => codes reutilisables 
-11-CRUD => Formulaires 
+9- validation => sur Article, Category, image et formulaires        //OK
+10-Traitement d'images et validation => codes reutilisables         //OK
+11-CRUD => Formulaires                                              //
 12-Authentification => Formulaire . Auth => codes reutilisables
 
 

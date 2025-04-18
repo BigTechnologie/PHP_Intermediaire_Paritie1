@@ -33,7 +33,7 @@ $router
     // Gestion des articles
     ->get('/admin', 'admin/article/index', 'admin_articles')
     ->match('/admin/article/[i:id]', 'admin/article/edit', 'admin_article')
-    ->post('/admin/article/[i:id]/delete', 'admin/article/delete', 'admin_article_delete')
+    ->post('/admin/article/[i:id]/delete', 'admin/article/delete', 'admin_article_delete') 
     ->match('/admin/article/new', 'admin/article/new', 'admin_article_new')
     // Gestion des catégories
     ->get('/admin/categories', 'admin/category/index', 'admin_categories')
