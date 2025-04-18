@@ -3,7 +3,6 @@ use App\Connection;
 use App\Controller\ArticleController;
 
 
-
 $title = 'Dawan Info plus';
 $pdo = Connection::getPDO();
 $table = new ArticleController($pdo);

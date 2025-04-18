@@ -1,0 +1,26 @@
+A: Objets => class
+B: PDO
+C: Exceptions => Exceptions personnalisées
+
+////////////////////////////////////////////////////////////
+
+1- Affichage => Router.php; URL.php; Routes: index.php dans public
+2- Pagination => methodes
+3- Connection => PDO
+4- Données => Model ou entity
+5- Manipulation des données => controllers
+6- Erreurs => Exceptions
+7- Affichage => templates ou views avec données provenant de la BDD => class 
+
+/////////////////////////////////////////////////////////////
+
+8- Affichage en detail => article et categorie                      //OK
+9- validation => sur Article, Category, image et formulaires 
+10-Traitement d'images et validation => codes reutilisables 
+11-CRUD => Formulaires 
+12-Authentification => Formulaire . Auth => codes reutilisables
+
+
+
+
+
