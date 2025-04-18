@@ -10,15 +10,15 @@ use App\Model\Article; // Importation du modèle Article (objet contenant les do
 class ArticleAttachment {
 
     // Chemin de base vers le répertoire "uploads"
-    const UPLOAD_PATH = __DIR__ . '/../../public/uploads';
+    const UPLOAD_PATH = __DIR__ . '/../../public/uploads'; // Modif
 
-    // Chemin spécifique pour les images d'articles
-    const DIRECTORY = self::UPLOAD_PATH . DIRECTORY_SEPARATOR . 'posts'; 
+    // Chemin spécifique pour les images d'articles dans post
+    const DIRECTORY = self::UPLOAD_PATH . DIRECTORY_SEPARATOR . 'posts'; // Modif
 
     /**
      * Upload les images d’un article dans deux formats (small et large).
     */
-    public static function upload(Article $article) 
+    public static function upload(Article $article) // Modif
     {
         // Récupération de l'image temporaire (uploadée par formulaire)
         $image = $article->getImage();

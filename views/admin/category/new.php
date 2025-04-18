@@ -6,6 +6,9 @@ use App\HTML\Form;
 use App\Validators\CategoryValidator;
 use App\ObjectHelper;
 use App\Model\Category;
+use App\Auth;
+
+Auth::check();
 
 
 $errors = [];

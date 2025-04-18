@@ -1,7 +1,9 @@
 <?php
+use App\Auth;
 use App\Connection;
-
 use App\Controller\ArticleController;
+
+Auth::check();
 
 $title = "Administration";
 $pdo = Connection::getPDO();

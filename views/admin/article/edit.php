@@ -7,6 +7,9 @@ use App\Controller\CategoryController;
 use App\HTML\Form;
 use App\ObjectHelper;
 use App\Validators\ArticleValidator;
+use App\Auth;
+
+Auth::check();
 
 
 $pdo = Connection::getPDO();

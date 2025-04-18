@@ -3,6 +3,9 @@
 use App\Attachment\ArticleAttachment;
 use App\Connection;
 use App\Controller\ArticleController;
+use App\Auth;
+
+Auth::check();
 
 $pdo = Connection::getPDO();
 

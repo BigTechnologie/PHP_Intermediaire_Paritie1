@@ -2,6 +2,9 @@
 
 use App\Connection;
 use App\Controller\CategoryController;
+use App\Auth;
+
+Auth::check();
 
 $title = "Gestion des catégories";
 $pdo = Connection::getPDO();

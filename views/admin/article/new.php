@@ -8,6 +8,9 @@ use App\HTML\Form;
 use App\Model\Article;
 use App\Validators\ArticleValidator;
 use App\ObjectHelper;
+use App\Auth;
+
+Auth::check();
 
 $errors = [];
 

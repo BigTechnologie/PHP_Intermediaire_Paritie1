@@ -5,6 +5,9 @@ use App\Controller\CategoryController;
 use App\HTML\Form;
 use App\Validators\CategoryValidator;
 use App\ObjectHelper;
+use App\Auth;
+
+Auth::check();
 
 
 $pdo = Connection::getPDO();

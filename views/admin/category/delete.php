@@ -2,6 +2,9 @@
 
 use App\Connection;
 use App\Controller\CategoryController;
+use App\Auth;
+
+Auth::check();
 
 $pdo = Connection::getPDO();
 $table = new CategoryController($pdo);
